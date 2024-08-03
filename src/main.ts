@@ -1,9 +1,21 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as cors from 'cors';
+import * as fs from 'fs';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  let httpsOptions;
+  try {
+    httpsOptions = {
+      key: fs.readFileSync('./src/cert/key.pem'),
+      cert: fs.readFileSync('./src/cert/cert.pem'),
+    };
+  } catch (error) {
+    console.error('Error reading SSL certificate files:', error);
+    process.exit(1);
+  }
+
+  const app = await NestFactory.create(AppModule, { httpsOptions });
   // Configurar CORS
   app.use(
     cors({
