@@ -19,7 +19,7 @@ async function bootstrap() {
   // Configurar CORS
   app.use(
     cors({
-      origin: 'https://main.d1qj8el7aplp5d.amplifyapp.com', // Permitir solicitudes desde este origen
+      origin: 'https://main.d2le7ptoltic3y.amplifyapp.com', // Permitir solicitudes desde este origen
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true, // Permitir el envío de cookies
     }),
