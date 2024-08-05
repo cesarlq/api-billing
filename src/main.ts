@@ -9,7 +9,7 @@ async function bootstrap() {
   // Configurar CORS
   app.use(
     cors({
-      origin: 'https://formulario-nextjs-nine.vercel.app/', // Permitir solicitudes desde este origen
+      origin: 'https://formulario-nextjs.onrender.com', // Permitir solicitudes desde este origen
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true, // Permitir el envío de cookies
     }),
