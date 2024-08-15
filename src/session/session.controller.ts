@@ -60,8 +60,16 @@ export class SessionController {
     }
     delete user.password;
     const jwt = await this.jwtService.signAsync({ user });
-    response.cookie('jwt', jwt, { httpOnly: true });
-    response.cookie('User', jwt, { httpOnly: false });
+    response.cookie('jwt', jwt, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+    });
+    response.cookie('User', jwt, {
+      httpOnly: false,
+      secure: true,
+      sameSite: 'none',
+    });
     return {
       message: 'success Login',
     };
