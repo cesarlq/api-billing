@@ -97,10 +97,7 @@ export class SessionController {
   async logout(@Res({ passthrough: true }) response: Response) {
     response.clearCookie('jwt');
     response.clearCookie('User');
-    return {
-      message: 'success logout',
-      response: response,
-    };
+    return response;
   }
 
   @Get()
