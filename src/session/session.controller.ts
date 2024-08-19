@@ -95,10 +95,18 @@ export class SessionController {
 
   @Post('logout')
   async logout(@Res({ passthrough: true }) response: Response) {
-    response.clearCookie('jwt');
-    response.clearCookie('User');
+    response.clearCookie('jwt', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+    });
+    response.clearCookie('User', {
+      httpOnly: false,
+      secure: true,
+      sameSite: 'none',
+    });
     return {
-      message: JSON.stringify(response),
+      message: 'success logout',
     };
   }
 
