@@ -99,6 +99,7 @@ export class SessionController {
     response.clearCookie('User');
     return {
       message: 'success logout',
+      response: response,
     };
   }
 
