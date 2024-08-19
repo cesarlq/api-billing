@@ -78,7 +78,7 @@ export class SessionController {
   @Get('user')
   async user(@Req() request: Request) {
     try {
-      const cookie = request.cookies['jwt'];
+      const cookie = request.cookies['User'];
       const data = await this.jwtService.verifyAsync(cookie);
       if (!data) {
         throw new UnauthorizedException('Invalid credentias data');
