@@ -20,7 +20,11 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
   app.use(
     cors({
-      origin: ['http://localhost:3000', 'https://session-yrl6.onrender.com'], // Permitir solicitudes desde este origen
+      origin: [
+        'http://localhost:3000',
+        'https://session-yrl6.onrender.com',
+        'https://api-billing-oq7v.onrender.com',
+      ], // Permitir solicitudes desde este origen
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true, // Permitir el envío de cookies
     }),
