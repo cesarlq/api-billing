@@ -72,6 +72,8 @@ export class SessionController {
 
   @Get('user')
   async user(@Req() request: Request) {
+    console.log('Request Headers:', request.headers);
+    console.log('Request Cookies:', request.cookies);
     try {
       const cookie = request.cookies['User'];
       const data = await this.jwtService.verifyAsync(cookie);
