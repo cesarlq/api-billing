@@ -62,7 +62,8 @@ export class SessionController {
     const jwt = await this.jwtService.signAsync({ user });
     response.cookie('User', jwt, {
       httpOnly: true,
-      sameSite: 'lax',
+      secure: true,
+      sameSite: 'none',
     });
     return {
       message: 'success Login',
