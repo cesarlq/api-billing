@@ -63,6 +63,7 @@ export class SessionController {
     response.cookie('User', jwt, {
       httpOnly: true,
       secure: true,
+      sameSite: 'none',
     });
     return {
       message: 'success Login',
