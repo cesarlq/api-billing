@@ -61,7 +61,7 @@ export class SessionController {
     delete user.password;
     const jwt = await this.jwtService.signAsync({ user });
     response.cookie('User', jwt, {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: 'none',
     });
@@ -90,7 +90,7 @@ export class SessionController {
   @Post('logout')
   async logout(@Res({ passthrough: true }) response: Response) {
     response.clearCookie('User', {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: 'none',
     });
