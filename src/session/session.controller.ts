@@ -62,7 +62,7 @@ export class SessionController {
     const jwt = await this.jwtService.signAsync({ user });
     response.cookie('User', jwt, {
       httpOnly: false,
-      secure: true,
+      secure: false,
       sameSite: 'none',
     });
     return {
@@ -78,7 +78,6 @@ export class SessionController {
       if (!data) {
         throw new UnauthorizedException('Invalid credentias data');
       }
-
       const user = await this.sessionService.findOne(data.user._id);
       const userObj = user.toObject();
       const { password, ...result } = userObj;
